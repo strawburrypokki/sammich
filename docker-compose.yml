@@ -1,0 +1,13 @@
+version: '3'
+services:
+  auth:
+    container_name: sammich_auth
+    build:
+      context: ./auth/
+    working_dir: /var/www/html
+    tty: true
+    ports:
+      - 8080:80
+    volumes:
+      - ./auth/:/var/www/html
+    restart: unless-stopped
