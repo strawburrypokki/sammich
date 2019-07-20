@@ -3,7 +3,7 @@ FROM debian:buster
 # Install php7.3 (following this guide : https://computingforgeeks.com/how-to-install-php-7-3-on-debian-9-debian-8/)
 ## Add  PHP 7.3 PPA repository
 RUN apt-get -qq update && \
-    apt-get -y install git vim wget lsb-release apt-transport-https ca-certificates > /dev/null && \
+    apt-get -y install git vim wget lsb-release apt-transport-https ca-certificates zip unzip > /dev/null && \
     wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
     echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php7.3.list
 

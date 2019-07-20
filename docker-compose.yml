@@ -5,9 +5,21 @@ services:
     build:
       context: ./auth/
     working_dir: /var/www/html
+    command: php bin/console server:run 0.0.0.0:8000
     tty: true
     ports:
-      - 8080:80
+      - 8001:8000
     volumes:
       - ./auth/:/var/www/html
     restart: unless-stopped
+  db:
+    container_name: sammich_db
+    image: mariadb
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: toor
+      MYSQL_DATABASE: sammich
+      MYSQL_USER: web_access
+      MYSQL_PASSWORD: web_access
+    volumes:
+      - ./data/db:/var/lib/mysql
